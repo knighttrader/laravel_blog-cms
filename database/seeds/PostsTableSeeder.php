@@ -22,7 +22,7 @@ class PostsTableSeeder extends Seeder
 
   	for($i = 1; $i <=10; $i++)
   	{
-			$image = "Post_Image_".rand(1, 5).".jpg";
+			$image = "Post_Image_".rand(1, 10).".jpg";
 			$days  += rand(0, 5) + $i;
 			$date  = date("Y-m-d H:i:s", strtotime("2019-01-01 09:00:00 +{$days} days"));
 
@@ -32,10 +32,11 @@ class PostsTableSeeder extends Seeder
 				'excerpt'    => $faker->text(rand(250, 300)),
 				'body'       => $faker->paragraphs(rand(10, 15), true),
 				'slug'       => $faker->slug(),
-				'image'      => rand(0, 1) == 1 ? $image : 
-												rand(0, 1) == 1 ? $image : 
-												rand(0, 1) == 1 ? $image : NULL, 
-												// Increase Probability for data to have image
+        'image'      => $image,
+        // 'image'      => rand(0, 1) == 1 ? $image :
+				// 								rand(0, 1) == 1 ? $image :
+				// 								rand(0, 1) == 1 ? $image : NULL,
+				// 								// Increase Probability for data to have image
 				'created_at' => $date,
 				'updated_at' => $date,
   		];
